@@ -1,0 +1,36 @@
+{
+  "name": "danger-plugin-npm-outdated",
+  "version": "1.0.0",
+  "description": "Danger plugin for npm outdated packages",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel index.js --out-dir dist",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "index.js",
+    "dist/index.js",
+    "README.md",
+    "License"
+  ],
+  "keywords": [
+    "danger",
+    "danger-plugin"
+  ],
+  "author": "Revath S Kumar <rsk@revathskumar.com> (http://blog.revathskumar.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/revathskumar/danger-plugin-npm-audit/issues"
+  },
+  "homepage": "https://github.com/revathskumar/danger-plugin-npm-audit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/revathskumar/danger-plugin-npm-audit"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4"
+  }
+}
