@@ -23,7 +23,7 @@ schedule(npmOutdated());
 
 ## Sample message
 
-![sample message](https://raw.githubusercontent.com/revathskumar/danger-plugin-npm-audit/master/images/message.png)
+![sample message](https://raw.githubusercontent.com/revathskumar/danger-plugin-npm-outdated/master/images/message.png)
 
 ## License
 
