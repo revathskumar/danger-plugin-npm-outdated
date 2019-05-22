@@ -21,12 +21,12 @@
   "author": "Revath S Kumar <rsk@revathskumar.com> (http://blog.revathskumar.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/revathskumar/danger-plugin-npm-audit/issues"
+    "url": "https://github.com/revathskumar/danger-plugin-npm-outdated/issues"
   },
-  "homepage": "https://github.com/revathskumar/danger-plugin-npm-audit#readme",
+  "homepage": "https://github.com/revathskumar/danger-plugin-npm-outdated#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/revathskumar/danger-plugin-npm-audit"
+    "url": "https://github.com/revathskumar/danger-plugin-npm-outdated"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
