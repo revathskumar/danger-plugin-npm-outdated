@@ -15,7 +15,8 @@ const formatOutdatedPackages = (outdatedPackages = {}, packageNames = []) => {
 
 const execP = outdatedCommand => {
   return new Promise((resolve, reject) => {
-    exec(outdatedCommand, function(error, stdout, stderr) {
+    const execOptions = { maxBuffer: 10 * 1024 * 1024 };
+    exec(outdatedCommand, execOptions, function(error, stdout, stderr) {
       if (stdout) {
         resolve(JSON.parse(stdout));
       }
