@@ -28,7 +28,8 @@ const execP = outdatedCommand => {
 };
 
 export default async function npmOutdated(options = {}) {
-  let outdatedCommand = "npm outdated --json";
+  const filterPackages = (options.packages || []).join(' ');
+  let outdatedCommand = `npm outdated ${filterPackages} --json`;
 
   try {
     const outdatedPackages = await execP(outdatedCommand);

@@ -18,7 +18,9 @@ import { schedule } from "danger";
 import npmOutdated from "danger-plugin-npm-outdated";
 
 // Note: You need to use schedule()
-schedule(npmOutdated());
+schedule(npmOutdated({
+  packages: ['@babel/cli'], // (OPTIONAL) Specify which packages you want to target
+}));
 ```
 
 ## Sample message
