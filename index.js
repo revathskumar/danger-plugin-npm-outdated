@@ -28,11 +28,16 @@ const execP = outdatedCommand => {
 };
 
 export default async function npmOutdated(options = {}) {
+  const exclude = (options && options.exclude) || [];
+  if (exclude && !Array.isArray(exclude)) {
+    throw new TypeError('exclude option must be of type string[] containing package names to exclude');
+  }
+
   let outdatedCommand = "npm outdated --json";
 
   try {
     const outdatedPackages = await execP(outdatedCommand);
-    const packageNames = Object.keys(outdatedPackages);
+    const packageNames = Object.keys(outdatedPackages).filter((packageName) => !exclude.includes(packageName));
     if (packageNames.length) {
       const packagesTable = formatOutdatedPackages(
         outdatedPackages,
