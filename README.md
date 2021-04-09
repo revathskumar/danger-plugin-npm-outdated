@@ -19,7 +19,16 @@ import npmOutdated from "danger-plugin-npm-outdated";
 
 // Note: You need to use schedule()
 schedule(npmOutdated());
+
+// example using options
+schedule(npmOutdated({ exclude: ['package-name'] }));
 ```
+
+## Options
+| Option | Type | Default |
+| ------ | ---- | ------- |
+| `exclude` | `string[]` | `[]` |
+
 
 ## Sample message
 
