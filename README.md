@@ -21,6 +21,18 @@ import npmOutdated from "danger-plugin-npm-outdated";
 schedule(npmOutdated());
 ```
 
+## Options
+
+|Name|Default|Function|
+|-|-|-|
+|prodOnly|false|Only consider production dependencies|
+
+Pass options to the `npmOutdated` function
+
+```ts
+scheduled(npmOutdated({ prodOnly: true }))
+```
+
 ## Sample message
 
 ![sample message](https://raw.githubusercontent.com/revathskumar/danger-plugin-npm-outdated/master/images/message.png)

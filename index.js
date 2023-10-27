@@ -1,14 +1,14 @@
 "use strict";
 const exec = require("child_process").exec;
 
-const formatOutdatedPackages = (outdatedPackages = {}, packageNames = []) => {
+const formatOutdatedPackages = (outdatedPackages = {}, packageNames = [], options = {}) => {
   const headers = [
-    "| Package | Current | Wanted | latest |",
-    "|---------|---------|--------|--------|"
+    `| Package | Current | Wanted | latest |${options.prodOnly ? '' : ' kind |'}`,
+    `|---------|---------|--------|--------|${options.prodOnly ? '' : '------|'}`
   ];
   const content = packageNames.map(packageName => {
-    const { current, wanted, latest } = outdatedPackages[packageName];
-    return `| ${packageName} | ${current} | ${wanted} | ${latest} |`;
+    const { current, wanted, latest, type } = outdatedPackages[packageName];
+    return `| ${packageName} | ${current} | ${wanted} | ${latest} |${options.prodOnly ? '' : `${type} |`}`;
   });
   return headers.concat(content).join("\n");
 };
@@ -27,8 +27,14 @@ const execP = outdatedCommand => {
   });
 };
 
-export default async function npmOutdated(options = {}) {
-  let outdatedCommand = "npm outdated --json";
+export default async function npmOutdated(options = {
+  prodOnly: false,
+}) {
+  let outdatedCommand = "npm outdated --json --long";
+
+  if (options.prodOnly){
+    outdatedCommand += ' --production'
+  }
 
   try {
     const outdatedPackages = await execP(outdatedCommand);
@@ -36,10 +42,11 @@ export default async function npmOutdated(options = {}) {
     if (packageNames.length) {
       const packagesTable = formatOutdatedPackages(
         outdatedPackages,
-        packageNames
+        packageNames,
+        options
       );
 
-      warn(`You have ${packageNames.length} outdated packages`);
+      warn(`You have ${packageNames.length} outdated ${options.prodOnly ? 'production' : ''} packages`);
       markdown(`
 
 <details>
